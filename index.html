@@ -4,44 +4,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrea Andrade - Tarjeta Digital</title>
+  <title>Andrea Andrade - AAM Design Solutions</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+
+    :root {
+      --speed: 6s;
+      /* Velocidad del ciclo total */
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at center, #1e3a8a 0%, #020617 100%);
+      color: #f8fafc;
+      overflow: hidden;
+    }
+
+    /* Iluminación del borde de la tarjeta */
+    @keyframes cardEdgeGlow {
+
+      0%,
+      100% {
+        border-color: rgba(59, 130, 246, 0.1);
+        box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+      }
+
+      50% {
+        border-color: rgba(59, 130, 246, 0.6);
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+      }
+    }
+
+    .main-card {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(25px);
+      border: 2px solid rgba(255, 255, 255, 0.05);
+      animation: cardEdgeGlow var(--speed) infinite ease-in-out;
+    }
+
+    /* Animación de los botones: Borde y Fondo */
+    @keyframes buttonHighlight {
+
+      0%,
+      30%,
+      100% {
+        border-color: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0px rgba(59, 130, 246, 0);
+        transform: scale(1);
+      }
+
+      15% {
+        border-color: rgba(59, 130, 246, 0.8);
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        transform: scale(1.03);
+        background: rgba(59, 130, 246, 0.1);
+      }
+    }
+
+    /* Animación de los iconos: Giro 3D y Brillo */
+    @keyframes iconTech {
+
+      0%,
+      30%,
+      100% {
+        transform: rotateY(0deg);
+        filter: brightness(1);
+      }
+
+      15% {
+        transform: rotateY(360deg);
+        filter: brightness(1.5) drop-shadow(0 0 8px currentColor);
+      }
+    }
+
+    .btn-animate {
+      animation: buttonHighlight var(--speed) infinite;
+      transition: all 0.3s ease;
+    }
+
+    .icon-animate {
+      animation: iconTech var(--speed) infinite;
+    }
+
+    /* Retrasos secuenciales para el efecto "uno por uno" */
+    .delay-1 {
+      animation-delay: 0s;
+    }
+
+    .delay-2 {
+      animation-delay: 1.5s;
+    }
+
+    .delay-3 {
+      animation-delay: 3s;
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #60a5fa, #a5b4fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Efecto de escaneo de luz que pasa por toda la tarjeta */
+    .scanner {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 20%;
+      background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.05), transparent);
+      animation: scanMove 4s infinite linear;
+    }
+
+    @keyframes scanMove {
+      0% {
+        top: -100%;
+      }
+
+      100% {
+        top: 200%;
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-gray-900 flex items-center justify-center min-h-screen p-4">
+<body class="flex items-center justify-center min-h-screen p-6">
 
-  <div class="max-w-sm w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
-    <div class="h-32 bg-gradient-to-r from-blue-900 to-indigo-700"></div>
+  <div class="max-w-sm w-full main-card rounded-[3.5rem] overflow-hidden relative">
 
-    <div class="px-6 pb-8 -mt-16 text-center">
-      <div class="relative inline-block">
-        <img src="/assets/images/Logo for AAM Design Solutions Web - Version 1.png" alt="Logo AAM"
-          class="w-32 h-32 mx-auto rounded-2xl border-4 border-white shadow-lg bg-white p-2 object-contain">
+    <div class="scanner"></div>
+
+    <div class="h-44 bg-gradient-to-b from-blue-600/20 to-transparent flex items-center justify-center relative">
+      <div class="absolute -bottom-10 w-32 h-32 bg-[#0f172a] rounded-[2.5rem] p-1 border border-blue-500/30 shadow-2xl">
+        <div class="w-full h-full bg-white rounded-[2.2rem] p-4 flex items-center justify-center">
+          <img src="/assets/images/Logo for AAM Design Solutions Web - Version 1-Photoroom.png" alt="AAM Logo"
+            class="w-full h-full object-contain">
+        </div>
       </div>
+    </div>
 
-      <h1 class="mt-4 text-2xl font-bold text-gray-800 leading-tight">Andrea Arcelia Andrade Mejia</h1>
-      <p class="text-blue-700 font-semibold text-sm uppercase tracking-wider mb-6">Diseño Web / Fundadora & Asesora
-        Digital</p>
+    <div class="px-8 pt-16 pb-12 text-center">
+      <h1 class="text-2xl font-extrabold tracking-tighter text-white mb-1">Andrea Arcelia Andrade Mejía</h1>
+      <p class="gradient-text font-bold text-[11px] uppercase tracking-[0.4em] mb-10">Fundadora & Asesora Digital</p>
 
-      <div class="space-y-3">
-        <a href="https://wa.me/523313862743"
-          class="flex items-center justify-center gap-3 w-full py-4 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-xl font-bold transition-all transform hover:scale-[1.02]">
-          <i class='bx bxl-whatsapp text-2xl'></i> WhatsApp
-        </a>
+      <div class="space-y-5">
 
-        <a href="mailto:andreamejiarockyservices@gmail.com"
-          class="flex items-center justify-center gap-3 w-full py-4 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-xl font-bold border border-gray-300 transition-all">
-          <i class='bx bx-envelope text-2xl'></i> Enviar Correo
+        <a href="https://wa.me/523313862743?text=Hola%20Andrea!"
+          class="btn-animate delay-1 flex items-center justify-between px-6 py-5 rounded-2xl font-bold border group">
+          <div class="flex items-center gap-4">
+            <div
+              class="icon-animate delay-1 w-11 h-11 bg-[#25D366] text-white rounded-xl flex items-center justify-center shadow-lg shadow-green-900/40">
+              <i class='bx bxl-whatsapp text-2xl'></i>
+            </div>
+            <span class="text-sm tracking-wide text-white/90">WhatsApp Directo</span>
+          </div>
+          <i class='bx bx-chevron-right text-xl opacity-30'></i>
         </a>
 
         <a href="https://portafolio-orcin-three.vercel.app/"
-          class="flex items-center justify-center gap-3 w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold shadow-lg shadow-indigo-200 transition-all transform hover:scale-[1.02]">
-          <i class='bx bx-globe text-2xl'></i> Ver Mi Portafolio
+          class="btn-animate delay-2 flex items-center justify-between px-6 py-5 rounded-2xl font-bold border group">
+          <div class="flex items-center gap-4">
+            <div
+              class="icon-animate delay-2 w-11 h-11 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-lg shadow-blue-900/40">
+              <i class='bx bx-globe text-2xl'></i>
+            </div>
+            <span class="text-sm tracking-wide text-white/90">Ver Portafolio</span>
+          </div>
+          <i class='bx bx-chevron-right text-xl opacity-30'></i>
+        </a>
+
+        <a href="mailto:andreamejiarockyservices@gmail.com"
+          class="btn-animate delay-3 flex items-center justify-between px-6 py-5 rounded-2xl font-bold border group">
+          <div class="flex items-center gap-4">
+            <div
+              class="icon-animate delay-3 w-11 h-11 bg-slate-700 text-white rounded-xl flex items-center justify-center">
+              <i class='bx bx-envelope text-2xl'></i>
+            </div>
+            <span class="text-sm tracking-wide text-slate-300">Enviar Correo</span>
+          </div>
+          <i class='bx bx-chevron-right text-xl opacity-30'></i>
         </a>
       </div>
 
-      <p class="mt-8 text-xs text-gray-600 font-medium uppercase italic">AAM Design Solutions Web</p>
+      <div class="mt-12 group">
+        <div class="h-[2px] w-12 bg-blue-600/40 mx-auto mb-4 transition-all group-hover:w-24"></div>
+        <p class="text-[9px] text-slate-500 font-bold uppercase tracking-[0.6em]">AAM Design Solutions Web</p>
+      </div>
+
     </div>
   </div>
 
